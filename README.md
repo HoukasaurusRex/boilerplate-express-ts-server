@@ -1,7 +1,8 @@
-# template-express.js
+# The Perfect Express Server
+
 A Best Practices™️ Express.js template for new projects
 
-```
+```dir
 src/
   config/
     - configuration files
@@ -29,3 +30,13 @@ server.js
 test.js
   - main test file that will run all test cases under the test/ directory
 ```
+
+### TODO
+
+- [ ] Add DB
+- [ ] Add validators
+- [ ] Add tests with mocha and chai
+- [ ] Add socket.io
+- [x] Write in typescript
+- [ ] Add clustering with pm2
+- [ ] Logging and debug
