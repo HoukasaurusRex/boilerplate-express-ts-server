@@ -1,4 +1,4 @@
-# The Perfect Express Server
+# The Perfect Express-TS Server
 
 A Best Practices™️ Express.js template for new projects
 
@@ -14,29 +14,31 @@ src/
     - common business logic used in the provider functions
   models/
     - database models
-  routes.js
-    - load all routes
-  db.js
-    - load all models
-  app.js
+  app.ts
     - load all of the above
+  db.ts
+    - load all models
+  io.ts
+    - load all sockets
+  routes.ts
+    - load all routes
 test/
   unit/
     - unit tests
   integration/
     - integration tests
-server.js
-  - load the app.js file and listen on a port
-test.js
+server.ts
+  - load the app.ts file and listen on a port
+test.ts
   - main test file that will run all test cases under the test/ directory
 ```
 
 ### TODO
 
-- [ ] Add DB
+- [x] Add DB
 - [ ] Add validators
 - [ ] Add tests with mocha and chai
-- [ ] Add socket.io
+- [x] Add socket.io
 - [x] Write in typescript
 - [ ] Add clustering with pm2
 - [ ] Logging and debug

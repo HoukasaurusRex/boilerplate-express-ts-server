@@ -1,26 +1,31 @@
 {
-  "name": "the-perfect-express-server",
+  "name": "the-perfect-express-ts-server",
   "version": "0.0.0",
   "private": true,
+  "main": "server.js",
   "scripts": {
     "start": "node ./dist/server.js",
-    "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly ./server.ts"
+    "build": "tsc --project src/config/tsconfig.json",
+    "dev": "ts-node-dev --project src/config/tsconfig.json --respawn --transpileOnly ./server.ts"
   },
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv-defaults": "^1.1.1",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
-    "socket.io": "^2.3.0",
-    "typescript": "^3.8.3"
+    "pg": "^8.1.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.8",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.5",
     "@types/node": "^13.13.5",
     "chai": "^4.2.0",
     "mocha": "^7.1.2",
-    "ts-node-dev": "^1.0.0-pre.44"
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
   }
 }

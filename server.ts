@@ -4,6 +4,7 @@ import debug from 'debug'
 import http from 'http'
 import app from './src/app'
 import io from './src/io'
+import db from './src/db'
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10)
@@ -51,8 +52,12 @@ const onListening = () => {
   console.log(`Listening on ${bind}`)
 }
 
-io.attach(server)
+db.sync().then(() => {
+  io.attach(server)
+  
+  server.listen(port)
+  server.on('error', onError)
+  server.on('listening', onListening)
+})
 
-server.listen(port)
-server.on('error', onError)
-server.on('listening', onListening)
+  

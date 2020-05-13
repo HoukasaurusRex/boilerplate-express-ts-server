@@ -3,7 +3,6 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import compression from 'compression'
 import routes from './routes'
-import db from './db'
 
 // https://expressjs.com/en/5x/api.html
 const app = express()
