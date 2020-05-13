@@ -37,8 +37,10 @@ test.ts
 
 - [x] Add DB
 - [ ] Add validators
-- [ ] Add tests with mocha and chai
+- [x] Add tests with mocha and chai
 - [x] Add socket.io
 - [x] Write in typescript
 - [ ] Add clustering with pm2
 - [x] Logging
+- [ ] Run tests in husky
+- [ ] Add linting
