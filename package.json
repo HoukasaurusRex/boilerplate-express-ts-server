@@ -11,7 +11,6 @@
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
-    "dayjs": "^1.8.26",
     "debug": "~2.6.9",
     "dotenv-defaults": "^1.1.1",
     "express": "~4.16.1",
