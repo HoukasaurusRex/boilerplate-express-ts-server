@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import debug from 'debug'
 import http from 'http'
 import app from './src/app'
 import io from './src/io'
 import db from './src/db'
+import logger from './src/services/logger'
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10)
@@ -36,20 +36,19 @@ const onError = (error) => {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges')
+      logger.error(bind + ' requires elevated privileges')
       process.exit(1)
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use')
+      logger.error(bind + ' is already in use')
       process.exit(1)
     default:
+      logger.error(error)
       throw error
   }
 }
 
 const onListening = () => {
-  const addr = server.address()
-  const bind = getBind(addr)
-  console.log(`Listening on ${bind}`)
+  logger.info(`Listening at http://localhost:${port}`)
 }
 
 db.sync().then(() => {

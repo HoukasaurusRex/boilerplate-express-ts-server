@@ -1,4 +1,6 @@
 import dotenv from 'dotenv-defaults'
+import logger from '../services/logger'
+
 dotenv.config()
 
 export default {
@@ -9,7 +11,7 @@ export default {
     host: process.env.DB_HOSTNAME,
     port: process.env.DB_PORT,
     dialect: process.env.DB_DIALECT,
-    // logging: msg => logger.debug(msg),
+    logging: msg => logger.debug(msg),
     ssl: false,
     pool: {
       max: 20,
@@ -25,7 +27,7 @@ export default {
     host: process.env.DB_HOSTNAME,
     port: process.env.DB_PORT,
     dialect: process.env.DB_DIALECT,
-    // logging: msg => logger.debug(msg),
+    logging: msg => logger.debug(msg),
     ssl: false,
     pool: {
       max: 20,
@@ -41,7 +43,7 @@ export default {
     host: process.env.RDS_HOSTNAME,
     port: process.env.RDS_PORT,
     dialect: process.env.DB_DIALECT,
-    // logging: msg => logger.debug(msg),
+    logging: msg => logger.debug(msg),
     ssl: false,
     pool: {
       max: 20,
