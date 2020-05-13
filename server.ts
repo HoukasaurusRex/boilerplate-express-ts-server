@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import app from './src/app'
 import debug from 'debug'
 import http from 'http'
+import app from './src/app'
+import io from './src/io'
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10)
@@ -49,6 +50,8 @@ const onListening = () => {
   const bind = getBind(addr)
   console.log(`Listening on ${bind}`)
 }
+
+io.attach(server)
 
 server.listen(port)
 server.on('error', onError)

@@ -4,8 +4,8 @@ import logger from 'morgan'
 import compression from 'compression'
 import routes from './routes'
 import db from './db'
-import io from './io'
 
+// https://expressjs.com/en/5x/api.html
 const app = express()
 
 app.use(logger('dev'))
