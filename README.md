@@ -41,4 +41,4 @@ test.ts
 - [x] Add socket.io
 - [x] Write in typescript
 - [ ] Add clustering with pm2
-- [ ] Logging and debug
+- [x] Logging
