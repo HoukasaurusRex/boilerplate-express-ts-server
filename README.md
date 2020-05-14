@@ -1,6 +1,8 @@
 # The Perfect Express-TS Server
 
-A Best Practices™️ Express.js template for new projects
+Putting years of knowledge gained from working with Node/Express in production environments to work for the benefit of all humanity.
+
+## Overview
 
 ```dir
 src/
@@ -33,14 +35,52 @@ test.ts
   - main test file that will run all test cases under the test/ directory
 ```
 
+## Express Server
+
+The extensible and modular REST king. This repo is a highly opinionated guide to working with this relatively unopinionated framework that can be a treasure or trap at every turn (typescript optional).
+
+### App.js
+
+This is the body of every express application. It's removed from the entrypoint at server.js to keep the application definition separated from its invocation. This is the first place where a new project might go wrong, as the app.js file might be a convenient place in the beginning to put "literally everything", it will quickly make a "nobody touch" file thousands of lines long that will increase time to debug. That's why it's good to scope the app.js file to mostly import middlewares and routers from elsewhere and export the configured app.
+
+#### Features
+
+- CORS configuration
+- Multipart form parsing
+- Basic HTTP security
+- GZip compression
+- JSend response standards
+- REST/OpenAPI API standards
+- Error handling
+
+## Socket.io Server
+
+### Sockets
+
+### IO.js
+
+## Sequelize ORM
+
+### Model Definitions
+
+### DB.js
+
+## Mocha/Chai Testing
+
+### Integration vs. Unit Testing
+
+## PM2 Clustering
+
+### Vertical Scaling
+
 ### TODO
 
 - [x] Add DB
-- [ ] Add validators
+- [x] Add validators
 - [x] Add tests with mocha and chai
 - [x] Add socket.io
 - [x] Write in typescript
 - [ ] Add clustering with pm2
 - [x] Logging
-- [ ] Run tests in husky
-- [ ] Add linting
+- [x] Run tests in husky
+- [x] Add linting
