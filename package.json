@@ -1,6 +1,6 @@
 {
   "name": "the-perfect-express-ts-server",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "main": "server.js",
   "description": "A best practices express/ts server with clustering and socket.io",
