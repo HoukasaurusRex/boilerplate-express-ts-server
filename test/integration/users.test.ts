@@ -20,6 +20,11 @@ const generateUserPayload = (
   lastName: overrides.lastName || faker.name.lastName(),
 })
 
+const filterPassword = (user) => {
+  delete user.password
+  return user
+}
+
 let user
 
 describe('[ROUTES]: /users', () => {
@@ -27,13 +32,13 @@ describe('[ROUTES]: /users', () => {
     const payload = generateUserPayload()
     const res = await request(app).post('/users').send(payload).expect(200)
     user = res.body.data.user
-    expect(res.body.data.user).to.include(payload)
+    expect(res.body.data.user).to.include(filterPassword(payload))
   })
   describe('POST /users', () => {
     it('should return a status 200 and a new user', async () => {
       const payload = generateUserPayload()
       const res = await request(app).post('/users').send(payload).expect(200)
-      expect(res.body.data.user).to.include(payload)
+      expect(res.body.data.user).to.include(filterPassword(payload))
     })
   })
   describe('GET /users', () => {
@@ -49,7 +54,7 @@ describe('[ROUTES]: /users', () => {
         .put(`/users/${user.id}`)
         .send(payload)
         .expect(200)
-      expect(res.body.data.user).to.include(payload)
+      expect(res.body.data.user).to.include(filterPassword(payload))
     })
   })
   describe('DELETE /user/:id', () => {

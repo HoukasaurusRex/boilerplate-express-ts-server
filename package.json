@@ -10,7 +10,9 @@
     "postinstall": "yarn build",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
-    "lint": "eslint --quiet --fix",
+    "eslint": "eslint --quiet --fix",
+    "prettier": "prettier src/**/*.ts --write",
+    "lint": "yarn prettier && yarn eslint",
     "test": "nyc mocha"
   },
   "dependencies": {

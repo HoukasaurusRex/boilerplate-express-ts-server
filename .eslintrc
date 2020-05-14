@@ -22,6 +22,7 @@
       "prefer-const": "error",
       "prefer-arrow-callback": "error",
       "no-fallthrough": "off",
-      "@typescript-eslint/ban-ts-ignore": "warn"
+      "@typescript-eslint/ban-ts-ignore": "warn",
+      "@typescript-eslint/member-delimiter-style": "off"
   }
 }
