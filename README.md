@@ -37,15 +37,7 @@ test.ts
   - main test file that will run all test cases under the test/ directory
 ```
 
-## Express Server
-
-The extensible and modular REST king of node frameworks. This repo is a highly opinionated guide to working with this relatively unopinionated framework that can be a treasure or trap at every turn (typescript optional).
-
-### App.js
-
-This is the body of every express application. It's removed from the entrypoint at server.js to keep the application definition separated from its invocation. This is the first place where a new project might go wrong, as the app.js file might be a convenient place in the beginning to put "literally everything", it will quickly make a "nobody touch" file thousands of lines long that will increase time to debug. That's why it's good to scope the app.js file to mostly import middlewares and routers from elsewhere and export the configured app.
-
-#### Features
+## Features
 
 - CORS configuration
 - Multipart form parsing
@@ -55,6 +47,15 @@ This is the body of every express application. It's removed from the entrypoint 
 - REST/OpenAPI API standards
 - Error handling
 - PM2 clustering
+- Password hashing with bcrypt
+
+## Express Server
+
+The extensible and modular REST king of node frameworks. This repo is a highly opinionated guide to working with this relatively unopinionated framework that can be a treasure or trap at every turn (typescript optional).
+
+### App.js
+
+This is the body of every express application. It's removed from the entrypoint at server.js to keep the application definition separated from its invocation. This is the first place where a new project might go wrong, as the app.js file might be a convenient place in the beginning to put "literally everything", it will quickly make a "nobody touch" file thousands of lines long that will increase time to debug. That's why it's good to scope the app.js file to mostly import middlewares and routers from elsewhere and export the configured app.
 
 ## Socket.io Server
 
