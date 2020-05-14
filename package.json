@@ -33,6 +33,8 @@
     "@types/debug": "^4.1.5",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.5",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "chai": "^4.2.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
