@@ -22,9 +22,8 @@ app.set('port', port)
 
 const server = http.createServer(app)
 
-const getBind = (address) => typeof address === 'string'
-    ? `pipe ${address}`
-    : `port ${address?.port}`
+const getBind = (address) =>
+  typeof address === 'string' ? `pipe ${address}` : `port ${address?.port}`
 
 const onError = (error) => {
   if (error.syscall !== 'listen') {
@@ -53,10 +52,8 @@ const onListening = () => {
 
 db.sync().then(() => {
   io.attach(server)
-  
+
   server.listen(port)
   server.on('error', onError)
   server.on('listening', onListening)
 })
-
-  

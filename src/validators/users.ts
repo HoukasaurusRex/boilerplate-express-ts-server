@@ -4,41 +4,55 @@ import db from '../db'
 
 const { Users } = db.models
 
-const containsNumbers = str => str.search(/\d/) !== -1
-const containsLetters = str => str.search(/[a-zA-Z]/) !== -1
+const containsNumbers = (str) => str.search(/\d/) !== -1
+const containsLetters = (str) => str.search(/[a-zA-Z]/) !== -1
 
-const checkValidEmail = body('email', 'Email should be a valid email address')
-  .isEmail()
+const checkValidEmail = body(
+  'email',
+  'Email should be a valid email address'
+).isEmail()
 
 const checkUniqueEmail = body('email', 'Email is already in use')
   .exists()
-  .custom(async email => {
-    const user = await Users.findOne({ where: { email }})
+  .custom(async (email) => {
+    const user = await Users.findOne({ where: { email } })
     return !user
   })
 
-const checkPasswordLength = body('password', 'Password must be at least 6 characters long')
+const checkPasswordLength = body(
+  'password',
+  'Password must be at least 6 characters long'
+)
   .isString()
   .isLength({ min: 6, max: 200 })
 
-const checkPasswordNumeric = body('password', 'Password must contain at least one number')
-  .custom(val => containsNumbers(val))
+const checkPasswordNumeric = body(
+  'password',
+  'Password must contain at least one number'
+).custom((val) => containsNumbers(val))
 
-const checkPasswordAlpha = body('password', 'Password must contain at least one letter')
-  .custom(val => containsLetters(val))
+const checkPasswordAlpha = body(
+  'password',
+  'Password must contain at least one letter'
+).custom((val) => containsLetters(val))
 
-const checkValidFirstName = body('firstName', 'First Name must be a valid string between 2 and 64 characters long')
+const checkValidFirstName = body(
+  'firstName',
+  'First Name must be a valid string between 2 and 64 characters long'
+)
   .optional({ checkFalsy: false })
   .isString()
   .isLength({ min: 2, max: 64 })
 
-const checkValidLastName = body('lastName', 'Last Name must be a valid string between 2 and 64 characters long')
+const checkValidLastName = body(
+  'lastName',
+  'Last Name must be a valid string between 2 and 64 characters long'
+)
   .optional({ checkFalsy: false })
   .isString()
   .isLength({ min: 2, max: 64 })
 
-const paramId = param('id', 'ID param must be integer')
-  .isInt()
+const paramId = param('id', 'ID param must be integer').isInt()
 
 export default {
   postUsers: [
@@ -48,15 +62,9 @@ export default {
     checkPasswordNumeric,
     checkPasswordAlpha,
     checkValidFirstName,
-    checkValidLastName
+    checkValidLastName,
   ],
   getUsers: [],
-  putUsers: [
-    paramId,
-    checkValidFirstName,
-    checkValidLastName
-  ],
-  deleteUsers: [
-    paramId
-  ]
+  putUsers: [paramId, checkValidFirstName, checkValidLastName],
+  deleteUsers: [paramId],
 }

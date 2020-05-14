@@ -8,7 +8,7 @@ export default {
       const user = await Users.create(req.body)
       res.jsend.success({ user })
     } catch (error) {
-      // @ts-ignore 
+      // @ts-ignore
       error.status = error.status || 400
       next(error)
     }
@@ -18,7 +18,7 @@ export default {
       const users = await Users.findAll()
       res.jsend.success({ users })
     } catch (error) {
-      // @ts-ignore 
+      // @ts-ignore
       error.status = error.status || 400
       next(error)
     }
@@ -29,7 +29,7 @@ export default {
       await user.update(req.body)
       res.jsend.success({ user })
     } catch (error) {
-      // @ts-ignore 
+      // @ts-ignore
       error.status = error.status || 400
       next(error)
     }
@@ -40,9 +40,9 @@ export default {
       await user.destroy()
       res.jsend.success({ user })
     } catch (error) {
-      // @ts-ignore 
+      // @ts-ignore
       error.status = error.status || 400
       next(error)
     }
-  }
+  },
 }

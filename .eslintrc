@@ -1,5 +1,10 @@
 {
-  "extends": ["plugin:prettier/recommended"],
+  "extends": [
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "env": {
       "node": true
   },
@@ -15,6 +20,8 @@
   "rules": {
       "no-var": "error",
       "prefer-const": "error",
-      "prefer-arrow-callback": "error"
+      "prefer-arrow-callback": "error",
+      "no-fallthrough": "off",
+      "@typescript-eslint/ban-ts-ignore": "off"
   }
 }

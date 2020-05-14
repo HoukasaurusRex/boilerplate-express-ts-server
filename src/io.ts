@@ -7,7 +7,7 @@ const io = new Server({
   // origins: '*',
   // adapter: {}, // defaults to built in adapter https://github.com/socketio/socket.io-adapter
   // parser: {} // defaults to built in parser https://github.com/socketio/socket.io-parser
-  transports: ['websocket']
+  transports: ['websocket'],
 })
 
 io.on('connection', sockets(io))
