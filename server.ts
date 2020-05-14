@@ -47,7 +47,7 @@ const onError = (error) => {
 }
 
 const onListening = () => {
-  logger.info(`Listening at http://localhost:${port}`)
+  logger.info(`Listening at http://${process.env.IP || 'localhost'}:${port}`)
 }
 
 db.sync().then(() => {

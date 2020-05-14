@@ -3,9 +3,11 @@
   "version": "0.0.3",
   "private": true,
   "main": "server.js",
+  "description": "A best practices express/ts server with clustering and socket.io",
   "scripts": {
     "start": "pm2-runtime start ./dist/server.js --env production -i max",
     "poststart": "pm2 logs",
+    "postinstall": "yarn build",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
     "lint": "eslint --quiet --fix",
