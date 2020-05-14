@@ -80,7 +80,7 @@ This is the body of every express application. It's removed from the entrypoint 
 - [x] Add tests with mocha and chai
 - [x] Add socket.io
 - [x] Write in typescript
-- [ ] Add clustering with pm2
+- [x] Add clustering with pm2
 - [x] Logging
 - [x] Run tests in husky
 - [x] Add linting

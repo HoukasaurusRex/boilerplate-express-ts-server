@@ -4,7 +4,8 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node ./dist/server.js",
+    "start": "pm2-runtime start ./dist/server.js --env production -i max",
+    "poststart":  "pm2 logs",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
     "lint": "eslint --quiet --fix",
@@ -23,6 +24,7 @@
     "multer": "^1.4.2",
     "pg": "^8.1.0",
     "pg-hstore": "^2.3.3",
+    "pm2": "^4.4.0",
     "sequelize": "^5.21.8",
     "socket.io": "^2.3.0",
     "winston": "^3.2.1"

@@ -2,7 +2,7 @@ import logger from '../services/logger'
 
 export default {
   onChatMessage(msg, done) {
-    // this = socket
+    // @ts-ignore
     this.broadcast.emit('chat message', msg)
   },
   onDisconnect(msg, done) {
@@ -10,5 +10,5 @@ export default {
   },
   onError(err) {
     logger.log('socket: ', err)
-  }
+  },
 }
