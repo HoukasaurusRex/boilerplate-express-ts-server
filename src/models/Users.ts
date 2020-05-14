@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize'
 
 class User extends Model {
   static init(sequelize) {
+    // @ts-ignore not sure what to do about this for now
     super.init({
       // Model attributes are defined here
       email: {
