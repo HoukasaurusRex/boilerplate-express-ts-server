@@ -12,9 +12,9 @@ docker run --rm --name pg-docker \
   -e POSTGRES_USER=$DB_USER \
   -e POSTGRES_DB=$DB_NAME \
   -d \
-  -p 5432:5432 \
+  -p 5432:$DB_PORT \
   -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data \
   postgres
 
 # docker logs pg-docker # if there's an error
-#docker exec -it <container_id> psql -U <user> -d <database>
+# docker exec -it <container_id> psql -U <user> -d <database>
