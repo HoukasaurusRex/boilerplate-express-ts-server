@@ -1,4 +1,4 @@
-import socketsProvider from '../providers/sockets'
+import socketsProvider from '../../providers/v1/sockets'
 
 const sockets = (io) => (socket) => {
   socket.on('chat message', socketsProvider.onChatMessage)

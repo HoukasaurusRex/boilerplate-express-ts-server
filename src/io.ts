@@ -1,5 +1,5 @@
 import Server from 'socket.io'
-import sockets from './controllers/sockets'
+import sockets from './controllers/v1/sockets'
 
 // https://socket.io/docs/server-api/
 const io = new Server({

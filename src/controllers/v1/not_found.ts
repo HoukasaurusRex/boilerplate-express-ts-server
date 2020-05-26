@@ -1,5 +1,5 @@
 import express from 'express'
-import errors from '../providers/errors'
+import errors from '../../providers/v1/errors'
 const router = express.Router()
 
 router.all('*', errors.notFound)

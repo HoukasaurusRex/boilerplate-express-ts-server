@@ -1,5 +1,5 @@
 export default {
-  getGreeting: (req, res, next) => {
+  getGreeting(req, res, next): void {
     res.send('Hello')
   },
 }

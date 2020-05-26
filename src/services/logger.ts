@@ -1,4 +1,5 @@
-import { createLogger, format, transports } from 'winston'
+import morgan from 'morgan'
+import { createLogger, format, transports, Logger } from 'winston'
 
 const { combine, colorize, timestamp, align, printf } = format
 
@@ -41,6 +42,22 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
       ),
     })
   )
+}
+
+export const httpLogger = (env: string | undefined): morgan => {
+  switch (env) {
+    case 'production':
+      // use winston logger in production
+      return morgan('combined', {
+        stream: { write: (message): Logger => logger.info(message) },
+      })
+    case 'test':
+      // no logging in tests
+      return (_req, _res, next): void => next()
+    default:
+      // console logging in development
+      return morgan('dev')
+  }
 }
 
 export default logger

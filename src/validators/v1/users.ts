@@ -1,6 +1,7 @@
 // https://express-validator.github.io/docs/index.html
 import { body, param } from 'express-validator'
-import db from '../db'
+import validationResult from '../../services/validator'
+import db from '../../db'
 
 const { Users } = db.models
 
@@ -63,8 +64,14 @@ export default {
     checkPasswordAlpha,
     checkValidFirstName,
     checkValidLastName,
+    validationResult,
   ],
   getUsers: [],
-  putUsers: [paramId, checkValidFirstName, checkValidLastName],
-  deleteUsers: [paramId],
+  putUsers: [
+    paramId,
+    checkValidFirstName,
+    checkValidLastName,
+    validationResult,
+  ],
+  deleteUsers: [paramId, validationResult],
 }
