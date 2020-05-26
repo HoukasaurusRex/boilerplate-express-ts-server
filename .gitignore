@@ -105,3 +105,6 @@ dist
 
 # File uploads
 uploads/*
+
+# Editor files
+.vscode
