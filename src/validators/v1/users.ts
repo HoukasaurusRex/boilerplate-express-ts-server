@@ -1,9 +1,7 @@
 // https://express-validator.github.io/docs/index.html
 import { body, param } from 'express-validator'
 import validationResult from '../../services/validator'
-import db from '../../db'
-
-const { Users } = db.models
+import { Users } from '../../db'
 
 const containsNumbers = (str) => str.search(/\d/) !== -1
 const containsLetters = (str) => str.search(/[a-zA-Z]/) !== -1

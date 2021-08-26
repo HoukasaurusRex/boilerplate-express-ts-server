@@ -15,7 +15,7 @@ const generateUserPayload = (
   email: overrides.email || faker.internet.email(),
   password:
     overrides.password ||
-    `${faker.internet.password()}${faker.random.number()}`,
+    `${faker.internet.password()}${faker.datatype.number()}`,
   firstName: overrides.firstName || faker.name.firstName(),
   lastName: overrides.lastName || faker.name.lastName(),
 })
@@ -31,8 +31,8 @@ describe('[ROUTES]: /users', () => {
   beforeEach(async () => {
     const payload = generateUserPayload()
     const res = await request(app).post('/users').send(payload).expect(200)
-    user = res.body.data.user
     expect(res.body.data.user).to.include(filterPassword(payload))
+    user = res.body.data.user
   })
   describe('POST /users', () => {
     it('should return a status 200 and a new user', async () => {

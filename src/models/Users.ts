@@ -1,51 +1,83 @@
-import { DataTypes, Model } from 'sequelize'
+import {
+  BuildOptions,
+  DataTypes,
+  Model,
+  Sequelize,
+  InstanceUpdateOptions,
+  CreateOptions,
+} from 'sequelize'
 import { hash, compare } from 'bcrypt'
 
-async function hashPassword(user, options) {
+export interface UserAttributes {
+  id?: number
+  email: string
+  password: string
+  firstName?: string
+  lastName?: string
+  createdAt?: Date
+  updatedAt?: Date
+}
+export interface UserModel extends Model<UserAttributes>, UserAttributes {}
+
+export type UserStatic = typeof Model & {
+  new (values?: Record<string, unknown>, options?: BuildOptions): UserModel
+}
+
+const hashPassword = async (
+  user,
+  _options: InstanceUpdateOptions | CreateOptions
+) => {
   const hashedPassword = await hash(user.password, 8)
   user.password = hashedPassword
   return user
 }
 
-class User extends Model {
-  static init(sequelize) {
-    // @ts-ignore not sure what to do about this for now
-    super.init(
-      {
-        // Model attributes are defined here
-        email: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        password: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        firstName: {
-          type: DataTypes.STRING,
-        },
-        lastName: {
-          type: DataTypes.STRING,
-        },
+export function UserFactory(sequelize: Sequelize): UserStatic {
+  const Users = <UserStatic>sequelize.define(
+    'Users',
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
       },
-      {
-        // Other model options go here
-        sequelize, // We need to pass the connection instance
-        modelName: 'Users', // We need to choose the model name
-        paranoid: true, // This will set the deletedAt timestamp to filter results instead of deleting the row
-        hooks: {
-          // hash passwords before storing
-          beforeCreate: hashPassword,
-          beforeUpdate: hashPassword,
-        },
-      }
-    )
-  }
-  // instance level method to validate hashed password
-  validPassword(password) {
-    // @ts-ignore
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      firstName: {
+        type: DataTypes.STRING,
+      },
+      lastName: {
+        type: DataTypes.STRING,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+    },
+    {
+      modelName: 'Users',
+      paranoid: true, // This will set the deletedAt timestamp to filter results instead of deleting the row
+      hooks: {
+        beforeCreate: hashPassword,
+        beforeUpdate: hashPassword,
+      },
+    }
+  )
+  Users.prototype.validPassword = function (password) {
     return compare(password, this.password)
   }
+  return Users
 }
-
-export default User

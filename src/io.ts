@@ -1,4 +1,4 @@
-import Server from 'socket.io'
+import { Server } from 'socket.io'
 import sockets from './controllers/v1/sockets'
 
 // https://socket.io/docs/server-api/

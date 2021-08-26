@@ -1,6 +1,4 @@
-import db from '../../db'
-
-const { Users } = db.models
+import { Users } from '../../db'
 
 export default {
   async postUsers(req, res, next): Promise<void> {
@@ -24,6 +22,7 @@ export default {
   async putUsers(req, res, next): Promise<void> {
     try {
       const user = await Users.findByPk(req.params.id)
+      if (!user) throw new Error('User not found')
       await user.update(req.body)
       res.jsend.success({ user })
     } catch (error) {
@@ -34,6 +33,7 @@ export default {
   async deleteUsers(req, res, next): Promise<void> {
     try {
       const user = await Users.findByPk(req.params.id)
+      if (!user) throw new Error('User not found')
       await user.destroy()
       res.jsend.success({ user })
     } catch (error) {
