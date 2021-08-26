@@ -108,3 +108,4 @@ uploads/*
 
 # Editor files
 .vscode
+.husky
