@@ -2,9 +2,9 @@ import express from 'express'
 import indexController from './controllers/v1/index'
 import usersController from './controllers/v1/users'
 
-const router = express.Router()
+const v1 = express.Router()
 
-router.use('/', indexController)
-router.use('/users', usersController)
+v1.use('/', indexController)
+v1.use('/users', usersController)
 
-export default router
+export { v1 }
