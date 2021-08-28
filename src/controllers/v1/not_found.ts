@@ -1,7 +1,7 @@
 import express from 'express'
-import errors from '../../providers/v1/errors'
+import { notFound } from '../../providers/v1/errors'
 const router = express.Router()
 
-router.all('*', errors.notFound)
+router.all('*', notFound)
 
 export default router

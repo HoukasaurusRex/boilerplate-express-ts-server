@@ -1,5 +1,9 @@
-export default {
-  getGreeting(req, res, next): void {
-    res.send('Hello')
-  },
+import { NextFunction, Request, Response } from 'express'
+
+export const getGreeting = (
+  _req: Request,
+  res: Response,
+  _next: NextFunction
+): void => {
+  res.send('Hello')
 }

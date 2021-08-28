@@ -53,23 +53,21 @@ const checkValidLastName = body(
 
 const paramId = param('id', 'ID param must be integer').isInt()
 
-export default {
-  postUsers: [
-    checkValidEmail,
-    checkUniqueEmail,
-    checkPasswordLength,
-    checkPasswordNumeric,
-    checkPasswordAlpha,
-    checkValidFirstName,
-    checkValidLastName,
-    validationResult,
-  ],
-  getUsers: [],
-  putUsers: [
-    paramId,
-    checkValidFirstName,
-    checkValidLastName,
-    validationResult,
-  ],
-  deleteUsers: [paramId, validationResult],
-}
+export const postUsers = [
+  checkValidEmail,
+  checkUniqueEmail,
+  checkPasswordLength,
+  checkPasswordNumeric,
+  checkPasswordAlpha,
+  checkValidFirstName,
+  checkValidLastName,
+  validationResult,
+]
+export const getUsers = []
+export const putUsers = [
+  paramId,
+  checkValidFirstName,
+  checkValidLastName,
+  validationResult,
+]
+export const deleteUsers = [paramId, validationResult]

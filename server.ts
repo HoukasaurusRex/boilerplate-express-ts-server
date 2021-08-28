@@ -5,40 +5,22 @@ import app from './src/app'
 import io from './src/io'
 import db from './src/db'
 import logger from './src/services/logger'
-
-const normalizePort = (val) => {
-  const port = parseInt(val, 10)
-  if (isNaN(port)) {
-    return val
-  }
-  if (port >= 0) {
-    return port
-  }
-  return false
-}
-
-const port = normalizePort(process.env.PORT || '3000')
-app.set('port', port)
+import { expressPort as port, host } from './src/config'
 
 const server = http.createServer(app)
 
-const getBind = (address) =>
-  typeof address === 'string' ? `pipe ${address}` : `port ${address?.port}`
-
-const onError = (error) => {
+const onError = (error: NodeJS.ErrnoException) => {
   if (error.syscall !== 'listen') {
     throw error
   }
 
-  const bind = getBind(port)
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      logger.error(bind + ' requires elevated privileges')
+      logger.error(`port ${port} requires elevated privileges`)
       process.exit(1)
     case 'EADDRINUSE':
-      logger.error(bind + ' is already in use')
+      logger.error(`port ${port} is already in use`)
       process.exit(1)
     default:
       logger.error(error)
@@ -47,7 +29,7 @@ const onError = (error) => {
 }
 
 const onListening = () => {
-  logger.info(`Listening at http://${process.env.IP || 'localhost'}:${port}`)
+  logger.info(`Listening at http://${host}:${port}`)
 }
 
 db.sync().then(() => {

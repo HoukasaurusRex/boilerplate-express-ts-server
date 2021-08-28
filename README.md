@@ -95,6 +95,14 @@ Unit testing can be services and utility functions that are limited to a simple 
 
 Clustering in node can be powerful, but be wary of your use case and the extra complexities of adding verticle scaling to your application. If you need to use sticky sessions and have sensible horizontal scaling, process clustering may not be worth the extra work. Otherwise it can be a quick way to 
 
+### PM2 keymetrics keys
+
+For pm2 keymetrics monitoring on AWS instances, provide the following env vars
+https://pm2.keymetrics.io/docs/tutorials/use-pm2-with-aws-elastic-beanstalk/#integrate-pm2-with-keymetrics
+
+KEYMETRICS_PUBLIC = XXXXX
+KEYMETRICS_SECRET = XXXXX
+
 ### Vertical Scaling
 
 Vertical scaling is not for every production environment, for example using T2 micro instances in AWS are limited to 1 vCPU and would not benefit, however many environments including T2 medium and above instances or even Heroku are capable of dishing out multiple cores for you to take advantage of. If an application uses a mixture of horizontal and vertical scaling, it can scale exponentially as opposed to linearly.

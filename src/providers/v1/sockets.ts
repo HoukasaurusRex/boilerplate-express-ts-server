@@ -1,14 +1,19 @@
+import { Socket } from 'socket.io'
 import logger from '../../services/logger'
 
-export default {
-  onChatMessage(msg, done): void {
-    // @ts-ignore
-    this.broadcast.emit('chat message', msg)
-  },
-  onDisconnect(msg, done): void {
+type Done = (...args: any[]) => void
+export default class SocketsProvider {
+  private socket: Socket
+  constructor(socket: Socket) {
+    this.socket = socket
+  }
+  public onChatMessage(msg: string, _done: Done): void {
+    this.socket.broadcast.emit('chat message', msg)
+  }
+  public onDisconnect(msg: string): void {
     logger.log('Disconnect', msg)
-  },
-  onError(err): void {
+  }
+  public onError(err: Error): void {
     logger.log('socket: ', err)
-  },
+  }
 }

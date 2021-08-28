@@ -1,5 +1,5 @@
 import express from 'express'
-import indexProvider from '../../providers/v1/index'
+import * as indexProvider from '../../providers/v1/index'
 const router = express.Router()
 
 router.get('/', indexProvider.getGreeting)
