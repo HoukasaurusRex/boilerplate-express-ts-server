@@ -32,7 +32,7 @@ export const hashPassword = async (
 }
 
 export function UserFactory(sequelize: Sequelize): UserStatic {
-  const Users = <UserStatic>sequelize.define(
+  const Users = sequelize.define(
     'Users',
     {
       id: {
@@ -74,7 +74,7 @@ export function UserFactory(sequelize: Sequelize): UserStatic {
         beforeUpdate: hashPassword,
       },
     }
-  )
+  ) as UserStatic
   Users.prototype.validPassword = function (password) {
     return compare(password, this.password)
   }

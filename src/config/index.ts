@@ -4,6 +4,7 @@ dotenv.config()
 
 export * from './enums'
 export * from './env'
-export * from './db'
-export * from './migrations'
+export * from './sequelize'
+export * from './umzug'
 export * from './express'
+export * from './socketio'
