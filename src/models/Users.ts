@@ -23,13 +23,12 @@ export type UserStatic = typeof Model & {
   new (values?: Record<string, unknown>, options?: BuildOptions): UserModel
 }
 
-const hashPassword = async (
-  user,
+export const hashPassword = async (
+  user: UserModel,
   _options: InstanceUpdateOptions | CreateOptions
-) => {
+): Promise<void> => {
   const hashedPassword = await hash(user.password, 8)
   user.password = hashedPassword
-  return user
 }
 
 export function UserFactory(sequelize: Sequelize): UserStatic {
