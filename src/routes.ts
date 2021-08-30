@@ -7,4 +7,6 @@ const v1 = express.Router()
 v1.use('/', indexController)
 v1.use('/users', usersController)
 
-export { v1 }
+const latest = v1
+
+export { v1, latest }

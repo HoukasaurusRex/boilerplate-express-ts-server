@@ -27,7 +27,7 @@ const onError = (error: NodeJS.ErrnoException) => {
 }
 
 const onListening = () => {
-  logger.info(`Listening at http://${host}:${port}`)
+  logger.info(`Express server is listening at http://${host}:${port}`)
 }
 
 db.sync()

@@ -27,7 +27,7 @@ app.use(helmet()) // Send basic HTTP security res headers https://www.npmjs.com/
 app.use(compression()) // Compresses response with gzip https://www.npmjs.com/package/compression
 app.use(jsend.middleware) // Normalizes response body with jsend standard https://www.npmjs.com/package/jsend
 app.use('/v1/', router.v1) // Attach versioned router https://expressjs.com/en/5x/api.html#router
-app.use('/', router.v1) // Default to the latest api version if desired
+app.use('/', router.latest) // Default to the latest api version if desired
 app.use('*', notFound) // Catch any unhandled responses and send a custom 404 response
 app.use(handleError) // Attach a global error handler at the end https://expressjs.com/en/guide/error-handling.html
 app.set('port', port)
