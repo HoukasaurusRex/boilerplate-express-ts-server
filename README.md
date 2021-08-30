@@ -118,8 +118,8 @@ Vertical scaling is not for every production environment, for example using T2 m
 - [x] Logging
 - [x] Run tests in husky
 - [x] Add linting
-- [ ] Add types
+- [x] Add types
 - [x] Add versioning
 - [ ] Add auth
 - [ ] Add swagger docs
-- [ ] Add migration example
+- [x] Add migration example
