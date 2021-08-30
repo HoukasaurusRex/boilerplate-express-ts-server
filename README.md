@@ -1,4 +1,6 @@
 # The Perfect Express-TS Server
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fboilerplate-express-ts-server.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fboilerplate-express-ts-server?ref=badge_shield)
+
 
 Putting years of knowledge gained from working with Node/Express in production environments to work for the benefit of all humanity.
 
@@ -123,3 +125,7 @@ Vertical scaling is not for every production environment, for example using T2 m
 - [ ] Add auth
 - [ ] Add swagger docs
 - [x] Add migration example
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fboilerplate-express-ts-server.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fboilerplate-express-ts-server?ref=badge_large)
