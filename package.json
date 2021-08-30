@@ -22,6 +22,9 @@
       "pre-push": "NODE_ENV=test yarn test && yarn build && yarn version --patch"
     }
   },
+  "lint-staged": {
+    "*.{js,ts}": "yarn lint"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
