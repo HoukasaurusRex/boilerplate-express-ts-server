@@ -1,9 +1,4 @@
-import { NextFunction, Request, Response } from 'express'
-
-export const getGreeting = (
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-): void => {
-  res.send('Hello')
-}
+export * as homeProvider from './home'
+export * as errorsProvider from './errors'
+export { default as SocketsProvider } from './sockets'
+export * as usersProvider from './users'

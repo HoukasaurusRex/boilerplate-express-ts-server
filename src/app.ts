@@ -6,12 +6,13 @@ import cors from 'cors'
 import compression from 'compression'
 import jsend from 'jsend'
 import * as router from './routes'
-import { notFound, handleError } from './providers/v1/errors'
+import { errorsProvider } from './providers/v1'
 import { httpLogger } from './services/logger'
-import { environment, expressPort as port } from './config'
+import { environment, expressOptions } from './config'
 
 // https://expressjs.com/en/5x/api.html
 const app = express()
+const { port } = expressOptions
 
 // Add some custom middleware functions here
 // If this part gets too large, you can move them to "./services/"
@@ -27,9 +28,9 @@ app.use(helmet()) // Send basic HTTP security res headers https://www.npmjs.com/
 app.use(compression()) // Compresses response with gzip https://www.npmjs.com/package/compression
 app.use(jsend.middleware) // Normalizes response body with jsend standard https://www.npmjs.com/package/jsend
 app.use('/v1/', router.v1) // Attach versioned router https://expressjs.com/en/5x/api.html#router
-app.use('/', router.latest) // Default to the latest api version if desired
-app.use('*', notFound) // Catch any unhandled responses and send a custom 404 response
-app.use(handleError) // Attach a global error handler at the end https://expressjs.com/en/guide/error-handling.html
+app.use('/', router.v1) // Default to the latest api version if desired
+app.use('*', errorsProvider.notFound) // Catch any unhandled responses and send a custom 404 response
+app.use(errorsProvider.handleError) // Attach a global error handler at the end https://expressjs.com/en/guide/error-handling.html
 app.set('port', port)
 
 export default app

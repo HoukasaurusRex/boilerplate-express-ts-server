@@ -1,18 +1,12 @@
 import { Options, Dialect } from 'sequelize'
-import { enums } from './enums'
+import { env, dialects } from './enums'
 import logger from '../services/logger'
-import { environment } from './env'
+import environment from './env'
 
-const validDialects = [
-  'mysql',
-  'postgres',
-  'sqlite',
-  'mariadb',
-  'mssql',
-] as const
+const validDialects = Object.values(dialects)
 
 const getDialect = (dialect?: unknown): Dialect =>
-  validDialects.find((d) => d === dialect) || 'postgres'
+  validDialects.find((d) => d === dialect) || dialects.PSQL
 
 const devOptions: Options = {
   username: process.env.DB_USER || 'postgres',
@@ -66,9 +60,9 @@ const prodOptions: Options = {
 }
 
 const options = {
-  [enums.DEV]: devOptions,
-  [enums.TEST]: testOptions,
-  [enums.PROD]: prodOptions,
+  [env.DEV]: devOptions,
+  [env.TEST]: testOptions,
+  [env.PROD]: prodOptions,
 } as const
 
-export const dbConfig = options[environment]
+export default options[environment]

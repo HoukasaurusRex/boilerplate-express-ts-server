@@ -1,10 +1,9 @@
 import express from 'express'
-import indexController from '../controllers/v1/index'
-import usersController from '../controllers/v1/users'
+import * as controllers from '../controllers/v1'
 
-const router = express.Router()
+const v1 = express.Router()
 
-router.use('/', indexController)
-router.use('/users', usersController)
+v1.use('/', controllers.homeController)
+v1.use('/users', controllers.usersController)
 
-export default router
+export { v1 }

@@ -1,7 +1,4 @@
-import express from 'express'
-import * as indexProvider from '../../providers/v1/index'
-const router = express.Router()
-
-router.get('/', indexProvider.getGreeting)
-
-export default router
+export { default as homeController } from './home'
+export { default as notFoundController } from './not_found'
+export { default as socketsController } from './sockets'
+export { default as usersController } from './users'

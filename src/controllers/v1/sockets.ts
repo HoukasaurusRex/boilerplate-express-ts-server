@@ -1,5 +1,5 @@
 import { Server, Socket } from 'socket.io'
-import SocketsProvider from '../../providers/v1/sockets'
+import { SocketsProvider } from '../../providers/v1'
 
 const sockets =
   (_io: Server) =>

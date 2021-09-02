@@ -1,11 +1,11 @@
 import express from 'express'
-import * as userProvider from '../../providers/v1/users'
-import * as userValidator from '../../validators/v1/users'
+import { usersProvider } from '../../providers/v1'
+import { usersValidator } from '../../validators/v1'
 const router = express.Router()
 
-router.post('/', userValidator.postUsers, userProvider.postUsers)
-router.get('/', userValidator.getUsers, userProvider.getUsers)
-router.put('/:id', userValidator.putUsers, userProvider.putUsers)
-router.delete('/:id', userValidator.deleteUsers, userProvider.deleteUsers)
+router.post('/', usersValidator.postUsers, usersProvider.postUsers)
+router.get('/', usersValidator.getUsers, usersProvider.getUsers)
+router.put('/:id', usersValidator.putUsers, usersProvider.putUsers)
+router.delete('/:id', usersValidator.deleteUsers, usersProvider.deleteUsers)
 
 export default router

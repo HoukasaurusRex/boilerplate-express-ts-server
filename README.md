@@ -59,6 +59,7 @@ test/
 - Error handling
 - PM2 clustering
 - Password hashing with bcrypt
+- SQL Migrations with Umzug
 
 ## Express Server
 

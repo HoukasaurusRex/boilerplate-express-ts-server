@@ -1,6 +1,6 @@
-import { enums } from './enums'
+import { env } from './enums'
 
-const getEnvironment = (env?: unknown) =>
-  Object.values(enums).find((e) => e === env) || enums.DEV
+const getEnvironment = (environ?: unknown) =>
+  Object.values(env).find((e) => e === environ) || env.DEV
 
-export const environment = getEnvironment(process.env.NODE_ENV)
+export default getEnvironment(process.env.NODE_ENV)

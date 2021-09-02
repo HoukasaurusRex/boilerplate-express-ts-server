@@ -3,7 +3,7 @@ import { UmzugOptions } from 'umzug'
 import sequelize from '../db'
 import logger from '../services/logger'
 
-export const umzugOptions: UmzugOptions = {
+export default {
   migrations: {
     path: path.join(__dirname, '../migrations'),
     pattern: RegExp('.ts$'),
@@ -14,4 +14,4 @@ export const umzugOptions: UmzugOptions = {
   storageOptions: {
     sequelize: sequelize,
   },
-}
+} as UmzugOptions

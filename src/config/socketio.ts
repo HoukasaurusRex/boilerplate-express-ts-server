@@ -1,5 +1,5 @@
 import { ServerOptions } from 'socket.io'
 
-export const socketIOOptions: Partial<ServerOptions> = {
+export default {
   transports: ['websocket'],
-}
+} as Partial<ServerOptions>
