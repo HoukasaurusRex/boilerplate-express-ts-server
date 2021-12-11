@@ -30,4 +30,3 @@ describe('[SERVICES]: logger', () => {
     expect(logger.http instanceof Function).to.equal(true)
   })
 })
-
