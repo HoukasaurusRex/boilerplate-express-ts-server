@@ -68,5 +68,8 @@
     "ts-node": "^10.2.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.2"
-  }
+  },
+  "repository": "git@github.com:HoukasaurusRex/boilerplate-express-ts-server.git",
+  "author": "JT Houk <jt@houk.space> (https://jt.houk.space/)",
+  "license": "MIT"
 }
