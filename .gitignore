@@ -109,3 +109,15 @@ uploads/*
 # Editor files
 .vscode
 .husky
+
+# File System
+.DS_Store
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

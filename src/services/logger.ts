@@ -33,7 +33,7 @@ const logger = createLogger({
 })
 
 // Log to console in development
-if (environment === enums.DEV) {
+if (environment === enums.env.DEV) {
   logger.add(
     new transports.Console({
       format: combine(
@@ -48,12 +48,12 @@ if (environment === enums.DEV) {
 
 export const httpLogger = (env: string | undefined): morgan => {
   switch (env) {
-    case enums.PROD:
+    case enums.env.PROD:
       // use winston logger in production
       return morgan('combined', {
         stream: { write: (message): Logger => logger.info(message) },
       })
-    case enums.TEST:
+    case enums.env.TEST:
       // no logging in tests
       return (_req: Request, _res: Response, next: NextFunction): void => next()
     default:

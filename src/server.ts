@@ -5,8 +5,9 @@ import app from './app'
 import io from './io'
 import db from './db'
 import logger from './services/logger'
-import { expressPort as port, host } from './config'
+import { expressOptions } from './config'
 
+const { host, port } = expressOptions
 const server = http.createServer(app)
 
 const onError = (error: NodeJS.ErrnoException) => {
