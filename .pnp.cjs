@@ -533,7 +533,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dayjs", "npm:1.8.27"],
             ["debug", "virtual:a3843946baa1d7ff7c41b46706f0c11ddd6d83034212da2b741215c854d7b0a49be6d94159bacf1650361a37d74547f84ba06efeade572d864bc76613908df19#npm:4.3.2"],
             ["eventemitter2", "npm:5.0.1"],
-            ["fast-json-patch", "npm:3.1.0"],
+            ["fast-json-patch", "npm:3.1.1"],
             ["fclone", "npm:1.0.11"],
             ["nssocket", "npm:0.6.0"],
             ["pm2-axon", "npm:4.0.1"],
@@ -3376,10 +3376,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["fast-json-patch", [
-        ["npm:3.1.0", {
-          "packageLocation": "./.yarn/cache/fast-json-patch-npm-3.1.0-f4bd467b5f-bad25a6121.zip/node_modules/fast-json-patch/",
+        ["npm:3.1.1", {
+          "packageLocation": "./.yarn/cache/fast-json-patch-npm-3.1.1-7e8bb70a45-c4525b61b2.zip/node_modules/fast-json-patch/",
           "packageDependencies": [
-            ["fast-json-patch", "npm:3.1.0"]
+            ["fast-json-patch", "npm:3.1.1"]
           ],
           "linkType": "HARD",
         }]
