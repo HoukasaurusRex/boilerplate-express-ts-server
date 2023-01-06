@@ -105,7 +105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["convert-source-map", "npm:1.7.0"],
             ["debug", "virtual:428f325a939c2653ad822eb3d75efb02ac311523dd0d4f9645afc39ea00bd86eceac35a9d59c9b6977d76b670a4ef0ae057ea572338a44729aa592711a8c05a3#npm:4.1.1"],
             ["gensync", "npm:1.0.0-beta.1"],
-            ["json5", "npm:2.1.3"],
+            ["json5", "npm:2.2.3"],
             ["lodash", "npm:4.17.21"],
             ["resolve", "patch:resolve@npm%3A1.17.0#~builtin<compat/resolve>::version=1.17.0&hash=07638b"],
             ["semver", "npm:5.7.1"],
@@ -4706,11 +4706,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["json5", [
-        ["npm:2.1.3", {
-          "packageLocation": "./.yarn/cache/json5-npm-2.1.3-b71ec6bcca-b2de57a665.zip/node_modules/json5/",
+        ["npm:2.2.3", {
+          "packageLocation": "./.yarn/cache/json5-npm-2.2.3-9962c55073-2a7436a933.zip/node_modules/json5/",
           "packageDependencies": [
-            ["json5", "npm:2.1.3"],
-            ["minimist", "npm:1.2.5"]
+            ["json5", "npm:2.2.3"]
           ],
           "linkType": "HARD",
         }]
