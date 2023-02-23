@@ -40,7 +40,7 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "pm2": "^5.1.2",
-    "sequelize": "^6.12.0-beta.2",
+    "sequelize": "^7.0.0-alpha.1",
     "socket.io": "^4.4.0",
     "umzug": "^2.3.0",
     "winston": "^3.3.3"
