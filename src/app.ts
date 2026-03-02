@@ -5,10 +5,10 @@ import multer from 'multer'
 import cors from 'cors'
 import compression from 'compression'
 import jsend from 'jsend'
-import * as router from './routes'
-import { errorsProvider } from './providers/v1'
-import { httpLogger } from './services/logger'
-import { environment, expressOptions } from './config'
+import * as router from './routes/index.ts'
+import { errorsProvider } from './providers/v1/index.ts'
+import { httpLogger } from './services/logger.ts'
+import { environment, expressOptions } from './config/index.ts'
 
 // https://expressjs.com/en/5x/api.html
 const app = express()

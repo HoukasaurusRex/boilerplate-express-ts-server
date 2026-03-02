@@ -1,5 +1,5 @@
-import { Socket } from 'socket.io'
-import logger from '../../services/logger'
+import type { Socket } from 'socket.io'
+import logger from '../../services/logger.ts'
 
 type Done = (...args: any[]) => void
 export default class SocketsProvider {

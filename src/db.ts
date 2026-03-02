@@ -1,10 +1,6 @@
-import { Sequelize } from 'sequelize'
-import { sequelizeOptions } from './config'
-import { UserFactory } from './models/Users'
+import { PrismaClient } from '@prisma/client'
+import { PrismaPg } from '@prisma/adapter-pg'
+import pg from 'pg'
 
-// https://sequelize.org/master/index.html
-const sequelize = new Sequelize(sequelizeOptions)
-
-export const Users = UserFactory(sequelize)
-
-export default sequelize
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL ?? '', allowExitOnIdle: true })
+export default new PrismaClient({ adapter: new PrismaPg(pool) })

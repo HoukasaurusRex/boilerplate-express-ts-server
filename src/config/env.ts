@@ -1,4 +1,4 @@
-import { env } from './enums'
+import { env } from './enums.ts'
 
 const getEnvironment = (environ?: unknown) =>
   Object.values(env).find((e) => e === environ) || env.DEV

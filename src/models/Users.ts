@@ -1,82 +1,34 @@
-import {
-  BuildOptions,
-  DataTypes,
-  Model,
-  Sequelize,
-  InstanceUpdateOptions,
-  CreateOptions,
-} from 'sequelize'
+import type { Prisma } from '@prisma/client'
 import { hash, compare } from 'bcrypt'
+import prisma from '../db.ts'
 
-export interface UserAttributes {
-  id?: number
-  email: string
-  password: string
-  firstName?: string
-  lastName?: string
-  createdAt?: Date
-  updatedAt?: Date
+const SALT_ROUNDS = process.env.NODE_ENV === 'test' ? 1 : 8
+
+export const hashPassword = (password: string): Promise<string> => hash(password, SALT_ROUNDS)
+
+export const validPassword = (password: string, hashedPassword: string): Promise<boolean> =>
+  compare(password, hashedPassword)
+
+export const findAll = () =>
+  prisma.user.findMany({ where: { deletedAt: null } })
+
+export const findById = (id: string) =>
+  prisma.user.findFirst({ where: { id, deletedAt: null } })
+
+export const findByEmail = (email: string) =>
+  prisma.user.findFirst({ where: { email, deletedAt: null } })
+
+export const create = async (data: Prisma.UserCreateInput) => {
+  const password = await hashPassword(data.password)
+  return prisma.user.create({ data: { ...data, password } })
 }
-export interface UserModel extends Model<UserAttributes>, UserAttributes {}
 
-export type UserStatic = typeof Model & {
-  new (values?: Record<string, unknown>, options?: BuildOptions): UserModel
-}
-
-export const hashPassword = async (
-  user: UserModel,
-  _options: InstanceUpdateOptions | CreateOptions
-): Promise<void> => {
-  const hashedPassword = await hash(user.password, 8)
-  user.password = hashedPassword
-}
-
-export function UserFactory(sequelize: Sequelize): UserStatic {
-  const Users = sequelize.define(
-    'Users',
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      firstName: {
-        type: DataTypes.STRING,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-      },
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-    },
-    {
-      modelName: 'Users',
-      paranoid: true, // This will set the deletedAt timestamp to filter results instead of deleting the row
-      hooks: {
-        beforeCreate: hashPassword,
-        beforeUpdate: hashPassword,
-      },
-    }
-  ) as UserStatic
-  Users.prototype.validPassword = function (password) {
-    return compare(password, this.password)
+export const update = async (id: string, data: Prisma.UserUpdateInput) => {
+  if (data.password && typeof data.password === 'string') {
+    data.password = await hashPassword(data.password)
   }
-  return Users
+  return prisma.user.update({ where: { id }, data })
 }
+
+export const softDelete = (id: string) =>
+  prisma.user.update({ where: { id }, data: { deletedAt: new Date() } })

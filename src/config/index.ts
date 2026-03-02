@@ -1,10 +1,4 @@
-import dotenv from 'dotenv'
-
-dotenv.config()
-
-export * as enums from './enums'
-export { default as environment } from './env'
-export * as expressOptions from './express'
-export { default as sequelizeOptions } from './sequelize'
-export { default as socketIOOptions } from './socketio'
-export { default as umzugOptions } from './umzug'
+export * as enums from './enums.ts'
+export { default as environment } from './env.ts'
+export * as expressOptions from './express.ts'
+export { default as socketIOOptions } from './socketio.ts'

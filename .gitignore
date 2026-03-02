@@ -110,6 +110,9 @@ uploads/*
 .vscode
 .husky
 
+# SQLite databases
+*.db
+
 # File System
 .DS_Store
 

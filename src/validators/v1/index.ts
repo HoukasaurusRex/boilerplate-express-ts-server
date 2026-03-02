@@ -1,1 +1,1 @@
-export * as usersValidator from './users'
+export * as usersValidator from './users.ts'

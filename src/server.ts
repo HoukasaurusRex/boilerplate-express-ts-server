@@ -1,9 +1,8 @@
 import http from 'http'
-import app from './app'
-import io from './io'
-import db from './db'
-import logger from './services/logger'
-import { expressOptions } from './config'
+import app from './app.ts'
+import io from './io.ts'
+import logger from './services/logger.ts'
+import { expressOptions } from './config/index.ts'
 
 const { host, port } = expressOptions
 const server = http.createServer(app)
@@ -29,14 +28,7 @@ const onListening = () => {
   logger.info(`Express server is listening at http://${host}:${port}`)
 }
 
-db.sync()
-  .then(() => {
-    io.attach(server)
-    server.listen(port)
-    server.on('error', onError)
-    server.on('listening', onListening)
-  })
-  .catch((error) => {
-    logger.error(error)
-    process.exit(1)
-  })
+io.attach(server)
+server.listen(port)
+server.on('error', onError)
+server.on('listening', onListening)

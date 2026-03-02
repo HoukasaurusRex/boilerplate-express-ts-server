@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express'
-import logger from '../../services/logger'
+import type { NextFunction, Request, Response } from 'express'
+import logger from '../../services/logger.ts'
 
 interface GenericErrorWithStatus extends Error {
   status?: number

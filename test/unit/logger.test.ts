@@ -1,32 +1,33 @@
-import { expect } from 'chai'
-import logger from '../../src/services/logger'
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import logger from '../../src/services/logger.ts'
 
 describe('[SERVICES]: logger', () => {
   it('logger.info should be a function', () => {
-    expect(logger.info instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.info, 'function')
   })
 
   it('logger.error should be a function', () => {
-    expect(logger.error instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.error, 'function')
   })
 
   it('logger.debug should be a function', () => {
-    expect(logger.debug instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.debug, 'function')
   })
 
   it('logger.warn should be a function', () => {
-    expect(logger.warn instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.warn, 'function')
   })
 
   it('logger.silly should be a function', () => {
-    expect(logger.silly instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.silly, 'function')
   })
 
   it('logger.verbose should be a function', () => {
-    expect(logger.verbose instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.verbose, 'function')
   })
 
   it('logger.http should be a function', () => {
-    expect(logger.http instanceof Function).to.equal(true)
+    assert.strictEqual(typeof logger.http, 'function')
   })
 })

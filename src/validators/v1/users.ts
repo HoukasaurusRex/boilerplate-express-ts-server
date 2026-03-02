@@ -1,7 +1,7 @@
 // https://express-validator.github.io/docs/index.html
 import { body, param } from 'express-validator'
-import validationResult from '../../services/validator'
-import { Users } from '../../db'
+import validationResult from '../../services/validator.ts'
+import { findByEmail } from '../../models/Users.ts'
 
 const containsNumbers = (str) => str.search(/\d/) !== -1
 const containsLetters = (str) => str.search(/[a-zA-Z]/) !== -1
@@ -14,8 +14,8 @@ const checkValidEmail = body(
 const checkUniqueEmail = body('email', 'Email is already in use')
   .exists()
   .custom(async (email) => {
-    const user = await Users.findOne({ where: { email } })
-    return !user
+    const user = await findByEmail(email)
+    if (user) throw new Error('Email is already in use')
   })
 
 const checkPasswordLength = body(
@@ -51,7 +51,7 @@ const checkValidLastName = body(
   .isString()
   .isLength({ min: 2, max: 64 })
 
-const paramId = param('id', 'ID param must be integer').isInt()
+const paramId = param('id', 'ID param must be a valid UUID').isUUID()
 
 export const postUsers = [
   checkValidEmail,

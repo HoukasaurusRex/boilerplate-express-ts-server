@@ -1,5 +1,5 @@
 import express from 'express'
-import * as controllers from '../controllers/v1'
+import * as controllers from '../controllers/v1/index.ts'
 
 const v1 = express.Router()
 

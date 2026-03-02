@@ -1,7 +1,8 @@
-import { NextFunction, Request, Response } from 'express'
+import type { NextFunction, Request, Response } from 'express'
+import type { Logger } from 'winston'
 import morgan from 'morgan'
-import { createLogger, format, transports, Logger } from 'winston'
-import { enums, environment } from '../config'
+import { createLogger, format, transports } from 'winston'
+import { enums, environment } from '../config/index.ts'
 
 const { combine, colorize, timestamp, align, printf } = format
 

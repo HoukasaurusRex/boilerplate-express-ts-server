@@ -1,6 +1,6 @@
 import express from 'express'
-import { usersProvider } from '../../providers/v1'
-import { usersValidator } from '../../validators/v1'
+import { usersProvider } from '../../providers/v1/index.ts'
+import { usersValidator } from '../../validators/v1/index.ts'
 const router = express.Router()
 
 router.post('/', usersValidator.postUsers, usersProvider.postUsers)
